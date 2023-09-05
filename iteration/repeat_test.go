@@ -2,12 +2,22 @@ package iteration
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 )
 
 func TestRepeat(t *testing.T) {
 	got := Repeat("a", 7)
 	expected := "aaaaaaa"
+
+	if got != expected {
+		t.Errorf("Got %q expected %q", got, expected)
+	}
+}
+
+func TestReplace(t *testing.T) {
+	got := strings.ReplaceAll("Testing one two three", "three", "tested")
+	expected := "Testing one two tested"
 
 	if got != expected {
 		t.Errorf("Got %q expected %q", got, expected)
