@@ -24,3 +24,6 @@ func TestSumAll(t *testing.T) {
 		t.Errorf("Got %v expected %v", got, expected)
 	}
 }
+
+func TestSumAllTails(t *testing.T) {
+}
