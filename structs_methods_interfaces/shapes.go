@@ -22,3 +22,12 @@ type Circle struct {
 func (c Circle) Area() float64 {
 	return math.Pi * c.Radius * c.Radius
 }
+
+type Triangle struct {
+	Height float64
+	Base   float64
+}
+
+func (t Triangle) Area() float64 {
+	return (t.Height * t.Base) / 2
+}
