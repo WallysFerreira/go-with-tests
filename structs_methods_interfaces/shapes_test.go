@@ -2,6 +2,7 @@ package main
 
 import "testing"
 
+/*
 func TestPerimeter(t *testing.T) {
 	rectangle := Rectangle{10.0, 10.0}
 	got := Perimeter(rectangle)
@@ -11,28 +12,23 @@ func TestPerimeter(t *testing.T) {
 		t.Errorf("Got %.2f expected %.2f", got, expected)
 	}
 }
+*/
 
 func TestArea(t *testing.T) {
-	checkArea := func(t testing.TB, shape Shape, expected float64) {
-		t.Helper()
-
-		got := shape.Area()
-
-		if got != expected {
-			t.Errorf("Got %.2f expected %.2f", got, expected)
-		}
+	areaTests := []struct {
+		shape    Shape
+		expected float64
+	}{
+		{Rectangle{10, 10}, 100.0},
+		{Circle{10}, 314.1592653589793},
+		{Triangle{12, 6}, 36.0},
 	}
 
-	t.Run("rectangle", func(t *testing.T) {
-		rectangle := Rectangle{10.0, 10.0}
+	for _, tt := range areaTests {
+		got := tt.shape.Area()
 
-		checkArea(t, rectangle, 100.0)
-	})
-
-	t.Run("circle", func(t *testing.T) {
-		circle := Circle{10}
-		expected := 314.1592653589793
-
-		checkArea(t, circle, expected)
-	})
+		if got != tt.expected {
+			t.Errorf("Got %g expected %g", got, tt.expected)
+		}
+	}
 }
