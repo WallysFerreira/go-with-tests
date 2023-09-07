@@ -7,3 +7,8 @@ func Perimeter(height, width float64) float64 {
 func Area(height, width float64) float64 {
 	return height * width
 }
+
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
