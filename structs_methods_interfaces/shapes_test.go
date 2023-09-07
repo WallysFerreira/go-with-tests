@@ -9,7 +9,7 @@ func TestPerimeter(t *testing.T) {
 		expected float64
 	}{
 		{name: "Rectangle", shape: Rectangle{10, 10}, expected: 40.0},
-		{name: "Circle", shape: Circle{10}, expected: 62.8318530718},
+		{name: "Circle", shape: Circle{10}, expected: 62.83185307179586},
 	}
 
 	for _, tt := range perimeterTests {
