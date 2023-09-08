@@ -3,28 +3,32 @@ package main
 import "testing"
 
 func TestWallet(t *testing.T) {
-	t.Run("deposit", func(t *testing.T) {
-		wallet := Wallet{}
-		wallet.Deposit(Bitcoin(10))
+	assertBalance := func(t testing.TB, wallet Wallet, expected Bitcoin) {
+		t.Helper()
 
 		got := wallet.Balance()
-		expected := Bitcoin(10)
 
 		if got != expected {
 			t.Errorf("%#v got %s expected %s", wallet, got, expected)
 		}
+	}
+
+	t.Run("deposit", func(t *testing.T) {
+		wallet := Wallet{}
+		wallet.Deposit(Bitcoin(10))
+
+		expected := Bitcoin(10)
+
+		assertBalance(t, wallet, expected)
 	})
 
 	t.Run("withdraw", func(t *testing.T) {
 		wallet := Wallet{balance: Bitcoin(20)}
 		wallet.Withdraw(Bitcoin(10))
 
-		got := wallet.Balance()
 		expected := Bitcoin(10)
 
-		if got != expected {
-			t.Errorf("%#v got %s expected %s", wallet, got, expected)
-		}
+		assertBalance(t, wallet, expected)
 	})
 
 }
