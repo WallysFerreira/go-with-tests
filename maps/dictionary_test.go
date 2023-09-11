@@ -12,6 +12,8 @@ func TestSearch(t *testing.T) {
 }
 
 func assertStrings(t testing.TB, got, expected string) {
+	t.Helper()
+
 	if got != expected {
 		t.Errorf("Got %s expected %s", got, expected)
 	}
