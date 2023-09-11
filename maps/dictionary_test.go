@@ -5,7 +5,7 @@ import "testing"
 func TestSearch(t *testing.T) {
 	dictionary := Dictionary{"test": "this is just a test"}
 
-	got := Search(dictionary, "test")
+	got := dictionary.Search("test")
 	expected := "this is just a test"
 
 	assertStrings(t, got, expected)
