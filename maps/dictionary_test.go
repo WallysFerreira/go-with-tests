@@ -41,7 +41,7 @@ func TestAdd(t *testing.T) {
 
 		err := dictionary.Add(key, "new test")
 
-		assertError(t, err, nil)
+		assertError(t, err, ErrWordExists)
 		assertDefinition(t, dictionary, key, value)
 	})
 }
