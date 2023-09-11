@@ -60,6 +60,14 @@ func TestWalk(t *testing.T) {
 			},
 			ExpectedCalls: []string{"Chris", "London"},
 		},
+		{
+			Name: "using slices",
+			Input: []Profile{
+				{33, "London"},
+				{34, "Los Angeles"},
+			},
+			ExpectedCalls: []string{"London", "Los Angeles"},
+		},
 	}
 
 	for _, test := range cases {
