@@ -37,3 +37,7 @@ func (d Dictionary) Add(word, value string) error {
 	d[word] = value
 	return nil
 }
+
+func (d Dictionary) Update(word, value string) {
+	d[word] = value
+}
