@@ -7,7 +7,7 @@ import (
 
 func TestCounter(t *testing.T) {
 	t.Run("imcrementing the counter 3 times leaves it at 3", func(t *testing.T) {
-		counter := Counter{}
+		counter := NewCounter()
 		expected := 3
 
 		counter.Inc()
@@ -19,7 +19,7 @@ func TestCounter(t *testing.T) {
 
 	t.Run("runs safely concurrently", func(t *testing.T) {
 		expected := 1000
-		counter := Counter{}
+		counter := NewCounter()
 
 		var wg sync.WaitGroup
 		wg.Add(expected)
@@ -36,7 +36,11 @@ func TestCounter(t *testing.T) {
 	})
 }
 
-func assertCounter(t testing.TB, got Counter, expected int) {
+func NewCounter() *Counter {
+	return &Counter{}
+}
+
+func assertCounter(t testing.TB, got *Counter, expected int) {
 	t.Helper()
 
 	if got.Value() != expected {
