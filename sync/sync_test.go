@@ -11,10 +11,14 @@ func TestCounter(t *testing.T) {
 		counter.Inc()
 		counter.Inc()
 
-		got := counter.Value()
-
-		if got != expected {
-			t.Errorf("Got %d, expected %d", got, expected)
-		}
+		assertCounter(t, counter, expected)
 	})
+}
+
+func assertCounter(t testing.TB, got Counter, expected int) {
+	t.Helper()
+
+	if got.Value() != expected {
+		t.Errorf("Got %d, expected %d", got, expected)
+	}
 }
